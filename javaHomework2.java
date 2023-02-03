@@ -8,16 +8,19 @@ public class javaHomework2 {
         for (int i = 0; i < 10; i++) {
             list.add((int) (Math.random() * 100));
         }
-        System.out.println("Список случайных чисел: " + list);
+        System.out.println("Исходный список случайных чисел: " + list);
 
         List<Integer> filteredList = removeEvenValues(list);
         System.out.println("Список с удалёнными чётными числами: " + filteredList);
 
         int minElement = getMin(filteredList);
-        System.out.println("Минимальный элемент массива: " + minElement);
+        System.out.println("Минимальный элемент списка: " + minElement);
 
         int maxElement = getMax(filteredList);
-        System.out.println("Максимальный элемент массива: " + maxElement);
+        System.out.println("Максимальный элемент списка: " + maxElement);
+
+        int averageValue = getAverage(filteredList);
+        System.out.println("Среднее значение элементов списка: " + averageValue);
 
     }
 
@@ -31,5 +34,9 @@ public class javaHomework2 {
 
     public static Integer getMax(List<Integer> list) {
         return list.stream().max(Integer::compareTo).orElse(0);
+    }
+
+    public static Integer getAverage(List<Integer> list) {
+        return list.stream().mapToInt(Integer::intValue).sum() / list.size();
     }
 }
